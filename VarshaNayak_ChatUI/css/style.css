@@ -35,3 +35,28 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
+.welcome {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.card {
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  background: #eee;
+}
