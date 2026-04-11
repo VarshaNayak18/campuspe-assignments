@@ -40,3 +40,41 @@ const responses = [
 function getAIResponse() {
   return responses[Math.floor(Math.random() * responses.length)];
 }
+
+
+function sendMessage() {
+  const text = textarea.value.trim();
+
+  if (text === "") return;
+
+  // Hide welcome screen after first message
+  welcome.style.display = "none";
+
+  // User message
+  addMessage(text, "user");
+
+  textarea.value = "";
+
+  // Show typing
+  showTyping();
+
+  setTimeout(() => {
+    hideTyping();
+    addMessage(getAIResponse(), "ai");
+  }, 1500);
+}
+
+
+sendBtn.addEventListener("click", sendMessage);
+
+textarea.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+
+textarea.addEventListener("input", () => {
+  sendBtn.disabled = textarea.value.trim() === "";
+});
